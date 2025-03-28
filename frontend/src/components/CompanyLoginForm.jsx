@@ -16,8 +16,8 @@ export default function CompanyLogin() {
         e.preventDefault();
         try {
             const response = await api.loginCompany({
-                email: formData.email,
-                password: formData.password
+                email: Yup.string().email('Invalid email format').required('Email is required'),
+                password: Yup.string().required('Password is required')
             });
 
             // Store company-specific token
